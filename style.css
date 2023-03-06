@@ -37,6 +37,7 @@ ul#todolist li:nth-child(n+2):before {
 	height: 12px;
 	border-radius: 2px;
 }
+/* https://www.toptal.com/designers/htmlarrows/math/multiplication-sign/   => sito web per trovare simboli*/
 ul#todolist li:nth-child(n+2):after {
 	float: right;
 	content: '\00D7';
