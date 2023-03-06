@@ -19,6 +19,13 @@ body{
 	list-style-type: none;
 	width: 100%;
 } */
+ul #todo{ 
+	width: 100%; 
+	padding: 5px;
+	border-radius: 2px;
+	border: 1px solid grey;
+	box-sizing: border-box;
+}
 ul#todolist li{
 	list-style-type: none;
 	padding: 5px;
@@ -60,6 +67,14 @@ ul#todolist li.checked:before{
 	left: 5px;
 	position: relative;
 	bottom: 4px;
+}
+#showCompletedBtn{
+	width: 100%;
+	padding: 5px;
+	border-radius: 2px;
+	background-color: aqua;
+	color: red;
+	margin-bottom: 5px;
 }
 /*
 li:before{
