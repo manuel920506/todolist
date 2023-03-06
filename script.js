@@ -52,6 +52,10 @@ var TodoList = function(){
 	}
 
 	return {
+		removeTodo: function(id){
+			todos.splice(id, 1);
+			syncLocalStorage();
+		},
 		toggleViewComplete: function(){
 			showCompleted = !showCompleted;
 			if(hasLocalStorage()){
@@ -98,14 +102,19 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	todolist.addEventListener('click', function(e){
 		let ele = e.target;
-		if(ele.id != 'addElementLi' && ele.nodeName.toLowerCase() === 'li' && e.offsetX > 5 && e.offsetX < 18){
-			myApp.toggleComplete(ele.id);
+		if(ele.id != 'addElementLi' && ele.nodeName.toLowerCase() === 'li'){  
+			let offset = ele.clientWidth - e.offsetX; 
+			if(offset <= 14 && offset >= 7 && e.offsetY >= 8 && e.offsetY <= 18){
+				ele.parentNode.removeChild(ele);
+				myApp.removeTodo(ele.id);
+			}else if(e.offsetX > 5 && e.offsetX < 18 && e.offsetY >= 5 && e.offsetY <= 18){
+				myApp.toggleComplete(ele.id);
 			
-			ele.classList.toggle('checked');
-			if(!myApp.getShowCompleted()){
-				ele.classList.add('hidden');
-			}
-			console.log(myApp.getTodos());
+				ele.classList.toggle('checked');
+				if(!myApp.getShowCompleted()){
+					ele.classList.add('hidden');
+				} 
+			} 
 		}
 		//console.dir(e);
 	});
